@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/style/contact.css">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="columns is-variable ">
+        <div class="column is-half has-text-left">
+          <h1 class="title is-1">Contact Us</h1>
+          <p class="is-size-4">If you want to see other content or have any suggestions,<br> feel free to contact us.
+          </p>
+          {{#each arrWarnings}}
+          <p class="box has-background-danger p-2 my-2">{{msg}}</p>
+          {{/each}}
+        </div>
+        <form action="/contact" method="POST" class="column is-half has-text-left">
+          <div>
+            <div class="field">
+              <label for="name" class="label">Name</label>
+              <div class="control">
+                <input class="input is-medium" type="text" id="name" name="name" placeholder="Name" autofocus
+                  value="{{formData.name}}">
+              </div>
+            </div>
+            <div class="field">
+              <label for="lastName" class="label">Lastname</label>
+              <div class="control">
+                <input class="input is-medium" type="text" id="lastName" name="lastName" placeholder="Lastname"
+                  autofocus value="{{formData.lastName}}">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="email">Email</label>
+              <div class="control">
+                <input id="email" name="email" class="input is-medium" type="email" placeholder="Email imput"
+                  value="{{formData.email}}">
+              </div>
+            </div>
+            <div class="field">
+              <label for="message" class="label">Message</label>
+              <div class="control">
+                <textarea name="message" id="message" class="textarea is-medium"
+                  placeholder="Text area">{{formData.message}}</textarea>
+
+                {{message}}
+
+              </div>
+            </div>
+            <div class="is-flex is-justify-content-space-evenly">
+              <div class="control">
+                <button type="submit" class="button is-link has-text-weight-medium is-medium" value="enviar">Send
+                  Message</button>
+              </div>
+              <div>
+                <button type="reset" class="button is-light has-text-weight-medium is-medium">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

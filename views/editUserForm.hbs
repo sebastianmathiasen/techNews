@@ -1,0 +1,172 @@
+<link rel="stylesheet" href="/style/registerForm.css">
+
+<section class="container">
+  <div class="columns is-multiline">
+    <div class="column is-10 is-offset-1 register">
+      <div class="columns">
+        <div class="column left">
+          <h1 class="title is-1">Settings</h1>
+          <h2 class="subtitle colored is-4 has-text-link">Account Information</h2>
+          <p>Last modification: {{user.updatedAt}}</p>
+          {{#if user.validated}}
+          <p>Account Validated</p>
+          {{else}}
+          <p>Account not Validated</p>
+          {{/if}}
+          <br>
+          {{#each arrWarnings}}
+          <p class="box has-background-danger p-2 my-2">{{msg}}</p>
+          {{/each}}
+
+          
+        </div>
+        <div class="column right has-text-centered">
+          <h1 class="title is-4">Edit your information</h1>
+          <form action="/users/settings" method="POST">
+            <div class="field">
+              <div class="control">
+                <label for="name" class="form-label">Name</label>
+                <input name="name" type="text" class="input is-link is-medium form-control" id="name" autocomplete="name"
+                  value="{{user.name}}">
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <label for="lastName" class="form-label">Lastname</label>
+                <input name="lastName" type="text" class="input is-link is-medium form-control" id="lastName"
+                  autocomplete="additional-name" value="{{user.lastName}}">
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <label for="email" class="form-label">Email</label>
+                <input name="email" type="email"  id="email" autocomplete="email"
+                  value="{{user.email}}" class="input is-link is-medium form-control">
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <label for="pass" class="form-label">Password</label>
+                <input name="pass" id="pass" class="input is-link is-medium form-control" type="password"
+                  autocomplete="current-password" {{!--   value="{{user.password}}" --}} >
+              </div>
+            </div>
+
+
+
+            <div class="is-flex is-justify-content-space-evenly">
+              <input class="button is-block is-primary is-small has-background-info-dark has-text-white" value="Confirm Changes" type="submit">
+
+              <a href="/">
+                <button class="button is-block is-primary is-small has-background-info-dark has-text-white" type="button">
+                  Cancel Changes
+                </button>
+              </a>
+
+              <button type="button" class="button is-block is-primary is-danger is-small js-modal-trigger" id="delete" data-target="deleteAccount">Delete Account</button>
+
+            </div>
+          </form>
+
+          <div class="modal" id="deleteAccount">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title">Please Confirm</p>
+                <button class="delete" aria-label="close"></button>
+              </header>
+              <section class="modal-card-body">
+                <p>This operation will delete your account</p>
+                <p>Are you sure?</p>
+              </section>
+              <footer class="modal-card-foot column">
+                <div class="is-flex is-justify-content-space-evenly">
+                <a href="/users/delete" type="button">
+                <button class="button is-danger is-block is-primary">Delete</button>
+                </a>
+                <button class="button is-block is-primary">Cancel</button>
+                </div>
+              </footer>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="column is-8 is-offset-2">
+      <br>
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span> &emsp;
+            <span class="icon">
+              <i class="fab fa-facebook"></i>
+            </span> &emsp;
+            <span class="icon">
+              <i class="fab fa-instagram"></i>
+            </span> &emsp;
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span> &emsp;
+            <span class="icon">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) { // Escape key
+      closeAllModals();
+    }
+  });
+});
+</script>

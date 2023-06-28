@@ -1,0 +1,64 @@
+<div class="column is-12"></div>
+<div class="column is-12"></div>
+<section class="box column is-three-fifths
+is-offset-one-fifth has-background-white">
+  <div>
+    <p class="title container has-text-centered">
+      Tech News
+    </p>
+  </div>
+</section>
+
+<div class="column is-12"></div>
+
+{{#each data}}
+<div class="columns body-columns">
+    <div class="column is-half is-offset-one-quarter">
+        <div class="card">
+            <div class="card-content header">
+                <div class="media">
+                    <div class="content">
+                        <p class="title is-5">{{title}}</p>
+                        <p class="subtitle is-6">{{author}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-image">
+                <figure class="image is-5by3">
+                    <img src="{{urlToImage}}" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="content">
+                    <p>
+                        {{description}}
+                    </p>
+                    <p>
+                        {{content}}
+                    </p>
+                    <a href="{{url}}">{{source.name}}</a>
+                    <br>
+                    <time datetime="{{publishedAt}}">{{publishedAt}}</time>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+
+{{!-- <section id="cards-container">
+    {{#each data}}
+    <div class="card-body">
+        <div class="img-container">
+            <img src={{urlToImage}} alt={{title}}>
+        </div>
+        <h2>{{title}}</h2>
+        <h3>{{author}}</h3>
+        <p>{{description}}</p>
+        <p>{{content}}</p>
+        <a href="{{url}}">{{url}}</a>
+        <p>{{publishedAt}}</p>
+        <p>{{source.name}}</p>
+    </div>
+    {{/each}}
+</section> --}}

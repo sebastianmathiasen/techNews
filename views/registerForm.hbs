@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="/style/registerForm.css">
+
+<section class="container">
+  <div class="columns is-multiline">
+    <div class="column is-10 is-offset-1 register">
+      <div class="columns">
+        <div class="column left">
+          <h1 class="title is-1">Tech News</h1>
+          <h2 class="subtitle colored is-4 has-text-link">Join us</h2>
+          <p>Enjoy the latest technology news.</p>
+          <br>
+          {{#each arrWarnings}}
+          <p class="box has-background-danger p-2 my-2">{{msg}}</p>
+          {{/each}}
+
+          {{#if message}}
+          <div class="box has-background-danger is-flex is-justify-content-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+              class="gbi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
+              aria-label="Warning:">
+              <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>
+            <div>
+              {{message}}
+            </div>
+          </div>
+          {{/if}}
+        </div>
+        <div class="column right has-text-centered">
+          <h1 class="title is-4">Sign up today</h1>
+          <form action="/users/register" method="POST">
+            <div class="field">
+              <div class="control">
+                <label for="name" class="form-label">Name</label>
+                <input name="name" id="name" class="input is-link is-medium" type="text" placeholder="Name"
+                  autocomplete="name" autofocus class="form-control">
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <label for="lastName" class="form-label">Lastname</label>
+                <input name="lastName" id="lastName" class="input is-link is-medium" type="text" placeholder="Lastname"
+                  autocomplete="additional-name" autofocus class="form-control">
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <label for="email" class="form-label">Email</label>
+                <input name="email" id="email" autocomplete="email" class="input is-link is-medium" type="email"
+                  placeholder="Email" class="form-control">
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <label for="pass" class="form-label">Password</label>
+                <input name="pass" id="pass" autocomplete="current-password" class="input is-link is-medium"
+                  type="password" class="form-control">
+              </div>
+            </div>
+
+            <div class="is-flex is-justify-content-space-evenly">
+              <button
+                class="button is-block is-primary is-medium has-background-info-dark has-text-white">Submit</button>
+
+              <a href="/users/login" class="btn btn-warning">
+                <button class="button is-block is-primary is-medium has-background-info-dark has-text-white"
+                  type="button">
+                  Back to Login
+                </button>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="column is-8 is-offset-2">
+      <br>
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span> &emsp;
+            <span class="icon">
+              <i class="fab fa-facebook"></i>
+            </span> &emsp;
+            <span class="icon">
+              <i class="fab fa-instagram"></i>
+            </span> &emsp;
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span> &emsp;
+            <span class="icon">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</section>

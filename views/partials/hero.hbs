@@ -1,0 +1,58 @@
+<section class="hero is-halfheight is-default is-bold">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="columns is-vcentered">
+        <div class="column is-5 ">
+          <h1 class="title is-2">
+            Tech News
+          </h1>
+          <h2 class="subtitle is-4">
+            by Sebastian
+          </h2>
+          <br>
+          <p class="has-text-centered">
+            {{#if user}}
+            <a class="button is-medium is-info is-outlined" href="/news">Learn more</a>
+            {{else}}
+            <a class="button is-medium is-info is-outlined" href="/login">Learn more</a>
+            {{/if}}
+          </p>
+        </div>
+        {{#with data2}}
+        <div class="columns body-columns">
+          <div class="column is-half is-offset-one-quarter">
+            <div class="card">
+              <div class="card-content header">
+                <div class="media">
+                  <div class="content">
+                    <p class="title is-5">{{title}}</p>
+                    <p class="subtitle is-6">{{author}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-image">
+                <figure class="image is-5by3">
+                  <img src="{{urlToImage}}" alt="Placeholder image">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <p>
+                    {{description}}
+                  </p>
+                  <p>
+                    {{content}}
+                  </p>
+                  <a href="{{url}}">{{source.name}}</a>
+                  <br>
+                  <time datetime="{{publishedAt}}">{{publishedAt}}</time>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/with}}
+      </div>
+    </div>
+  </div>
+</section>
